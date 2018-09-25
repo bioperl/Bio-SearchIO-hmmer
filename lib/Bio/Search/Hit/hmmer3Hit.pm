@@ -71,13 +71,11 @@ Internal methods are usually preceded with a _
 
 =cut
 
-
 # Let the code begin...
 
-
 package Bio::Search::Hit::hmmer3Hit;
-use strict;
 
+use strict;
 
 use base qw(Bio::Search::Hit::GenericHit);
 
@@ -85,9 +83,9 @@ use base qw(Bio::Search::Hit::GenericHit);
 
  Title   : new
  Usage   : my $obj = Bio::Search::Hit::HMMERHit->new();
- Function: Builds a new Bio::Search::Hit::HMMERHit object 
+ Function: Builds a new Bio::Search::Hit::HMMERHit object
  Returns : Bio::Search::Hit::HMMERHit
- Args    : 
+ Args    :
 
  Plus the Bio::Search::Hit::GenericHit inherited params
            -name         => Name of Hit (required)
@@ -97,7 +95,7 @@ use base qw(Bio::Search::Hit::GenericHit);
            -score        => Raw Score for the Hit (optional)
            -significance => Significance value for the Hit (optional)
            -algorithm    => Algorithm used (BLASTP, FASTX, etc...)
-           -hsps         => Array ref of HSPs for this Hit. 
+           -hsps         => Array ref of HSPs for this Hit.
 
 
 =cut
@@ -105,7 +103,7 @@ use base qw(Bio::Search::Hit::GenericHit);
 
 =head2 next_domain
 
- Title   : next_domain 
+ Title   : next_domain
  Usage   : my $domain = $hit->next_domain();
  Function: An alias for L<next_hsp()>, this will return the next HSP
  Returns : L<Bio::Search::HSP::HSPI> object

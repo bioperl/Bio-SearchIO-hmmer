@@ -1,7 +1,7 @@
 #
 # BioPerl module for Bio::Search::Hit::HMMERHit
 #
-# Please direct questions and support issues to <bioperl-l@bioperl.org> 
+# Please direct questions and support issues to <bioperl-l@bioperl.org>
 #
 # Cared for by Jason Stajich <jason@bioperl.org>
 #
@@ -39,15 +39,15 @@ the Bioperl mailing list.  Your participation is much appreciated.
   bioperl-l@bioperl.org                  - General discussion
   http://bioperl.org/wiki/Mailing_lists  - About the mailing lists
 
-=head2 Support 
+=head2 Support
 
 Please direct usage questions or support issues to the mailing list:
 
 I<bioperl-l@bioperl.org>
 
-rather than to the module maintainer directly. Many experienced and 
-reponsive experts will be able look at the problem and quickly 
-address it. Please include a thorough description of the problem 
+rather than to the module maintainer directly. Many experienced and
+reponsive experts will be able look at the problem and quickly
+address it. Please include a thorough description of the problem
 with code and data examples if at all possible.
 
 =head2 Reporting Bugs
@@ -69,13 +69,11 @@ Internal methods are usually preceded with a _
 
 =cut
 
-
 # Let the code begin...
 
-
 package Bio::Search::Hit::HMMERHit;
-use strict;
 
+use strict;
 
 use base qw(Bio::Search::Hit::GenericHit);
 
@@ -83,9 +81,9 @@ use base qw(Bio::Search::Hit::GenericHit);
 
  Title   : new
  Usage   : my $obj = Bio::Search::Hit::HMMERHit->new();
- Function: Builds a new Bio::Search::Hit::HMMERHit object 
+ Function: Builds a new Bio::Search::Hit::HMMERHit object
  Returns : Bio::Search::Hit::HMMERHit
- Args    : 
+ Args    :
 
  Plus the Bio::Search::Hit::GenericHit inherited params
            -name         => Name of Hit (required)
@@ -95,7 +93,7 @@ use base qw(Bio::Search::Hit::GenericHit);
            -score        => Raw Score for the Hit (optional)
            -significance => Significance value for the Hit (optional)
            -algorithm    => Algorithm used (BLASTP, FASTX, etc...)
-           -hsps         => Array ref of HSPs for this Hit. 
+           -hsps         => Array ref of HSPs for this Hit.
 
 
 =cut
@@ -103,7 +101,7 @@ use base qw(Bio::Search::Hit::GenericHit);
 
 =head2 next_domain
 
- Title   : next_domain 
+ Title   : next_domain
  Usage   : my $domain = $hit->next_domain();
  Function: An alias for L<next_hsp()>, this will return the next HSP
  Returns : L<Bio::Search::HSP::HSPI> object
@@ -181,7 +179,7 @@ sub domains{ shift->hsps() }
 
  Title   : length
  Usage   : my $len = $hit->length
- Function: Returns the length of the hit 
+ Function: Returns the length of the hit
  Returns : integer
  Args    : [optional] integer to set the length
 
@@ -192,11 +190,11 @@ sub domains{ shift->hsps() }
  Title   : algorithm
  Usage   : $alg = $hit->algorithm();
  Function: Gets the algorithm specification that was used to obtain the hit
-           For BLAST, the algorithm denotes what type of sequence was aligned 
-           against what (BLASTN: dna-dna, BLASTP prt-prt, BLASTX translated 
-           dna-prt, TBLASTN prt-translated dna, TBLASTX translated 
+           For BLAST, the algorithm denotes what type of sequence was aligned
+           against what (BLASTN: dna-dna, BLASTP prt-prt, BLASTX translated
+           dna-prt, TBLASTN prt-translated dna, TBLASTX translated
            dna-translated dna).
- Returns : a scalar string 
+ Returns : a scalar string
  Args    : [optional] scalar string to set the algorithm
 
 =cut
@@ -245,7 +243,7 @@ sub bits { return 0 }
  Title    : next_hsp
  Usage    : while( $hsp = $obj->next_hsp()) { ... }
  Function : Returns the next available High Scoring Pair
- Example  : 
+ Example  :
  Returns  : Bio::Search::HSP::HSPI object or null if finished
  Args     : none
 

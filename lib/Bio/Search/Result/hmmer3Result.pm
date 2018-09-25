@@ -71,11 +71,10 @@ Internal methods are usually preceded with a _
 
 =cut
 
-
 # Let the code begin...
 
-
 package Bio::Search::Result::hmmer3Result;
+
 use strict;
 
 use base qw(Bio::Search::Result::GenericResult);
@@ -84,7 +83,7 @@ use base qw(Bio::Search::Result::GenericResult);
 
  Title   : new
  Usage   : my $obj = new Bio::Search::Result::hmmer3Result.pm();
- Function: Builds a new Bio::Search::Result::hmmer3Result.pm object 
+ Function: Builds a new Bio::Search::Result::hmmer3Result.pm object
  Returns : an instance of Bio::Search::Result::hmmer3Result.pm
  Args    : -hmm_name => string, name of hmm file
            -sequence_file => name of the sequence file
@@ -168,7 +167,7 @@ sub next_model{ shift->next_hit }
 
 =cut
 
-sub models{ shift->hits } 
+sub models{ shift->hits }
 
 =head2 rewind
 

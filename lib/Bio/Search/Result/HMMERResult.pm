@@ -1,7 +1,7 @@
 #
 # BioPerl module for Bio::Search::Result::HMMERResult
 #
-# Please direct questions and support issues to <bioperl-l@bioperl.org> 
+# Please direct questions and support issues to <bioperl-l@bioperl.org>
 #
 # Cared for by Jason Stajich <jason@bioperl.org>
 #
@@ -48,15 +48,15 @@ the Bioperl mailing list.  Your participation is much appreciated.
   bioperl-l@bioperl.org                  - General discussion
   http://bioperl.org/wiki/Mailing_lists  - About the mailing lists
 
-=head2 Support 
+=head2 Support
 
 Please direct usage questions or support issues to the mailing list:
 
 I<bioperl-l@bioperl.org>
 
-rather than to the module maintainer directly. Many experienced and 
-reponsive experts will be able look at the problem and quickly 
-address it. Please include a thorough description of the problem 
+rather than to the module maintainer directly. Many experienced and
+reponsive experts will be able look at the problem and quickly
+address it. Please include a thorough description of the problem
 with code and data examples if at all possible.
 
 =head2 Reporting Bugs
@@ -78,14 +78,11 @@ Internal methods are usually preceded with a _
 
 =cut
 
-
 # Let the code begin...
 
-
 package Bio::Search::Result::HMMERResult;
+
 use strict;
-
-
 
 use base qw(Bio::Search::Result::GenericResult);
 
@@ -93,7 +90,7 @@ use base qw(Bio::Search::Result::GenericResult);
 
  Title   : new
  Usage   : my $obj = Bio::Search::Result::HMMERResult->new();
- Function: Builds a new Bio::Search::Result::HMMERResult object 
+ Function: Builds a new Bio::Search::Result::HMMERResult object
  Returns : Bio::Search::Result::HMMERResult
  Args    : -hmm_name => string, name of hmm file
            -sequence_file => name of the sequence file
@@ -118,10 +115,10 @@ plus Bio::Search::Result::GenericResult parameters
 sub new {
   my($class,@args) = @_;
   my $self = $class->SUPER::new(@args);
-  
+
   my ($hmm,$seqfile) = $self->_rearrange([qw(HMM_NAME SEQUENCE_FILE)],
 					 @args);
-  
+
   defined( $seqfile) && $self->sequence_file($seqfile);
   defined( $hmm) && $self->hmm_name($hmm);
 
@@ -300,7 +297,7 @@ Bio::Search::Result::ResultI implementation
  Returns : a scalar integer (units specific to algorithm, but probably the
            total number of residues in the database, if available) or undef if
            the information was not available to the Processor object.
- Args    : [optional] new scalar integer for number of letters in db 
+ Args    : [optional] new scalar integer for number of letters in db
 
 
 =cut
@@ -342,7 +339,7 @@ Bio::Search::Result::ResultI implementation
 
  Title   : get_statistic
  Usage   : my $gap_ext = $report->get_statistic('kappa')
- Function: Returns the value for a specific statistic available 
+ Function: Returns the value for a specific statistic available
            from this report
  Returns : string
  Args    : name of statistic (string)
@@ -438,7 +435,7 @@ sub rewind{
 
  Title   : program_reference
  Usage   : $obj->program_reference($newval)
- Function: 
+ Function:
  Returns : value of the literature reference for the algorithm
  Args    : newvalue (optional)
 

@@ -1,6 +1,6 @@
 # BioPerl module for Bio::Tools::Hmmpfam
 #
-# Please direct questions and support issues to <bioperl-l@bioperl.org> 
+# Please direct questions and support issues to <bioperl-l@bioperl.org>
 #
 # Cared for by  Balamurugan Kumarasamy
 #
@@ -36,15 +36,15 @@ Parser for Hmmpfam  program.  See also L<Bio::SearchIO::hmmer>.
   bioperl-l@bioperl.org                  - General discussion
   http://bioperl.org/wiki/Mailing_lists  - About the mailing lists
 
-=head2 Support 
+=head2 Support
 
 Please direct usage questions or support issues to the mailing list:
 
 I<bioperl-l@bioperl.org>
 
-rather than to the module maintainer directly. Many experienced and 
-reponsive experts will be able look at the problem and quickly 
-address it. Please include a thorough description of the problem 
+rather than to the module maintainer directly. Many experienced and
+reponsive experts will be able look at the problem and quickly
+address it. Please include a thorough description of the problem
 with code and data examples if at all possible.
 
 =head2 Reporting Bugs
@@ -68,6 +68,7 @@ web:
 =cut
 
 package Bio::Tools::Hmmpfam;
+
 use strict;
 
 use Bio::SeqFeature::FeaturePair;
@@ -110,28 +111,28 @@ sub new {
 sub next_result {
     my ($self) = @_;
     my $filehandle;
-    
+
  my $line;
 
     my $id;
     while ($_=$self->_readline()) {
          $line = $_;
          chomp $line;
-    
+
         if ( $line=~m/^Alignments of top-scoring domains/ ) {
           while( my $rest = $self->_readline() ) { last if $rest =~ m!^//! }
         }
 
         next if ($line=~m/^Model/ || /^\-/ || /^$/);
-        
+
         if ($line=~m/^Query sequence:\s+(\S+)/) {
            $id = $1;
            $self->seqname($id);
         }
-       
+
        if (my ($hid, $start, $end, $hstart, $hend, $score, $evalue) = $line=~m/^(\S+)\s+\S+\s+(\d+)\s+(\d+)\s+\S+\s+(\d+)\s+(\d+)\s+\S+\s+(\S+)\s+(\S+)/) {
             my %feature;
-            
+
             ($feature{name}) = $self->seqname;
             $feature{raw_score} = $score;
             $feature{p_value} = sprintf ("%.3e", $evalue);
@@ -148,7 +149,7 @@ sub next_result {
             ($feature{logic_name}) = 'hmmpfam';
             my $new_feat = $self->create_feature (\%feature);
             return $new_feat
-        
+
         }
         next;
 
@@ -179,7 +180,7 @@ sub create_feature {
                                                 -source     =>$feat->{source},
                                                 -primary    =>$feat->{primary},
                                                    );
-    
+
 
 
     my $feature2= Bio::SeqFeature::Generic->new(
@@ -193,12 +194,12 @@ sub create_feature {
     my $featurepair = Bio::SeqFeature::FeaturePair->new;
     $featurepair->feature1 ($feature1);
     $featurepair->feature2 ($feature2);
-   
+
    $featurepair->add_tag_value('evalue',$feat->{p_value});
    $featurepair->add_tag_value('percent_id','NULL');
    $featurepair->add_tag_value("hid",$feat->{primary});
-    return  $featurepair; 
-        
+    return  $featurepair;
+
 }
 
 =head2 seqname
@@ -224,5 +225,3 @@ sub seqname{
 }
 
 1;
-
-
